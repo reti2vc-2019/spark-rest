@@ -1,0 +1,18 @@
+# Gradle + IntelliJ
+.gradle
+.idea
+/build/
+/out/
+
+# Ignore Gradle GUI config, if any
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# OS-specific files
+.DS_Store
+Thumb.db
+
+# user token dir
+userToken
