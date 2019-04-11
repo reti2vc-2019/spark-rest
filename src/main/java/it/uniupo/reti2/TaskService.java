@@ -20,6 +20,14 @@ public class TaskService {
         String baseURL = "/api/v1.0";
         TaskDao taskDao = new TaskDao();
 
+        // enable CORS
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET, POST");
+            response.header("Access-Control-Allow-Headers", "Content-Type");
+        });
+
+
         // get all the tasks
         get(baseURL + "/tasks", "application/json", (request, response) -> {
             // set a proper response code and type
@@ -56,7 +64,7 @@ public class TaskService {
         }, gson::toJson);
 
         // add a new task
-        post(baseURL + "/tasks", (request, response) -> {
+        post(baseURL + "/tasks", "application/json", (request, response) -> {
             // get the body of the HTTP request
             Map addRequest = gson.fromJson(request.body(), Map.class);
 
